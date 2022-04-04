@@ -1,7 +1,7 @@
 var sizePicker = document.getElementById("sizePicker");
 var colorPicker = document.getElementById("colorPicker");
-let height = document.getElementById("inputHeight").value;
-let width = document.getElementById("inputWidth").value;
+let height = document.getElementById("inputHeight");
+let width = document.getElementById("inputWidth");
 
 function makeGrid() {
   event.preventDefault();
@@ -18,8 +18,10 @@ function makeGrid() {
      });
 }
 
-function submitForm() {
-  let submit = document.getElementsById("submit");
-    makeGrid(height, width);
-    });
+const sizeP = document.querySelector("#sizePicker");
+sizeP.addEventListener("submit", submitForm);
+
+function submitForm(event) {
+  event.preventDefault();
+  makeGrid(height.value, width.value);
 }
