@@ -1,10 +1,9 @@
-var sizePicker = document.getElementById("sizePicker");
+const sizeP = document.querySelector("#sizePicker");
 var colorPicker = document.getElementById("colorPicker");
 let height = document.getElementById("inputHeight");
 let width = document.getElementById("inputWidth");
 
 function makeGrid() {
-  event.preventDefault();
   const table = document.getElementById("pixelCanvas");
   var rows = table.innerHTML = ""
     for(let i = 0; i < rows; i++) {
@@ -18,7 +17,7 @@ function makeGrid() {
      });
 }
 
-const sizeP = document.querySelector("#sizePicker");
+
 sizeP.addEventListener("submit", submitForm);
 
 function submitForm(event) {
