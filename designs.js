@@ -1,9 +1,11 @@
+//** Define variables using id's from HTML doc.
 var canvas = document.getElementById("pixelCanvas");
 var color = document.getElementById("colorPicker");
 var sizePicker = document.getElementById("sizePicker");
 var height = document.getElementById("inputHeight");
 var width = document.getElementById("inputWidth");
 
+//** Create function to generate grid when user clicks submit.
 sizePicker.addEventListener("submit", function(evt) {
     evt.preventDefault();
     while (canvas.hasChildNodes()) {
@@ -12,6 +14,8 @@ sizePicker.addEventListener("submit", function(evt) {
     makeGrid(height.value, width.value);
 });
 
+//** Create grid function with listeners for coloring cells
+//** with mouse clicks and preventing issues (disabling) with right-clicks.
 function makeGrid(height, width) {
     for (let y = 0; y < height; y++) {
         let row = canvas.insertRow(y);
@@ -20,8 +24,8 @@ function makeGrid(height, width) {
             cell.addEventListener("mousedown", function(evt) {
                 cell.style.backgroundColor = colorPicker.value;
             cell.addEventListener("contextmenu", function(evt) {
-                evt.preventDefault();
-                cell.style.backgroundColor = "white";
+              evt.preventDefault();
+              cell.style.backgroundColor = "white";
             } )
             } )
         }
