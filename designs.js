@@ -1,26 +1,30 @@
-const sizeP = document.querySelector("#sizePicker");
-var colorPicker = document.getElementById("colorPicker");
-let height = document.getElementById("inputHeight");
-let width = document.getElementById("inputWidth");
+var canvas = document.getElementById("pixelCanvas");
+var color = document.getElementById("colorPicker");
+var sizePicker = document.getElementById("sizePicker");
+var height = document.getElementById("inputHeight");
+var width = document.getElementById("inputWidth");
 
-function makeGrid() {
-  const table = document.getElementById("pixelCanvas");
-  var rows = table.innerHTML = ""
-    for(let i = 0; i < rows; i++) {
-        var row = table.insertRow(i);
-        for (let c = 0; c < cells; c++) {
-            var cell = row.insertCell(c);
-      }
+sizePicker.addEventListener("submit", function(evt) {
+    evt.preventDefault();
+    while (canvas.hasChildNodes()) {
+        canvas.removeChild(canvas.lastChild);
     }
-    table.addEventListener('click', function(event) {
-           event.target.style.backgroundColor = color;
-     });
+    makeGrid(height.value, width.value);
+});
+
+function makeGrid(height, width) {
+    for (let y = 0; y < height; y++) {
+        let row = canvas.insertRow(y);
+        for (let x = 0; x < width; x++) {
+            let cell = row.insertCell(x);
+            cell.addEventListener("mousedown", function(evt) {
+                cell.style.backgroundColor = colorPicker.value;
+            cell.addEventListener("contextmenu", function(evt) {
+                evt.preventDefault();
+                cell.style.backgroundColor = "white";
+            } )
+            } )
+        }
+    }
 }
 
-
-sizeP.addEventListener("submit", submitForm);
-
-function submitForm(event) {
-  event.preventDefault();
-  makeGrid(height.value, width.value);
-}
