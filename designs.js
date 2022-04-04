@@ -6,10 +6,12 @@ var colorPicker = document.getElementById("colorPicker");
 var sizePicker = document.getElementById("sizePicker");
 
 //** Create function to generate grid when user clicks submit.
+//** childNodes code prevents another grid from appending to
+//** existing grid in UI and instead removes/regenerates grid.
 sizePicker.addEventListener("submit", function(e) {
     e.preventDefault();
-      if (grid.hasChildNodes()) {
-        removeChild();
+    while (grid.hasChildNodes()) {
+      grid.removeChild(grid.lastChild);
     }
     makeGrid(height.value, width.value);
 });
@@ -26,4 +28,3 @@ function makeGrid(height, width) {
         }
     }
 }
-
