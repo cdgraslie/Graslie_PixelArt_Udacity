@@ -8,14 +8,13 @@ var width = document.getElementById("inputWidth");
 //** Create function to generate grid when user clicks submit.
 sizePicker.addEventListener("submit", function(evt) {
     evt.preventDefault();
-    while (canvas.hasChildNodes()) {
-        canvas.removeChild(canvas.lastChild);
+      if (canvas.hasChildNodes()) {
+        removeChild();
     }
     makeGrid(height.value, width.value);
 });
-
 //** Create grid function with listeners for coloring cells
-//** with mouse clicks and preventing issues (disabling) with right-clicks.
+//** with mouse clicks and preventing issues with right-clicks.
 function makeGrid(height, width) {
     for (let y = 0; y < height; y++) {
         let row = canvas.insertRow(y);
@@ -25,10 +24,10 @@ function makeGrid(height, width) {
                 cell.style.backgroundColor = colorPicker.value;
             cell.addEventListener("contextmenu", function(evt) {
               evt.preventDefault();
-              cell.style.backgroundColor = "white";
             } )
             } )
         }
     }
 }
+
 
